@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Brand Flask</title>
+ <link type="text/css" rel="stylesheet" href="/css/reset.css">
+ <link type="text/css" rel="stylesheet" href="/css/brandflask_2.0.css">
+ <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:100,300,700"> 
+ <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ <script src="/js/jquery.sticky.js"></script>
+ <script src="/js/brand.ready.js"></script>
+</head>
+
+<body>
+	<header>
+		<div id="header-nav">
+			<nav>
+				<ul>						
+					<li><a href="/"><img id="nav-logo" src="/img/flask.png"></a></li>
+					<li><a href="/top/50">Top50</a></li>
+					<li><a href="/Luxury/50">Luxury</a></li>	
+					<li><a href="/Casual/50">Casual</a></li>	
+					<li><a href="/MultiBrandShop/50">Multi Brand Shop</a></li>
+					<li><a href="/Boutique/50">Boutique</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div id="container">
+    <div id="main">
+    	<div id="main-brand">
+    		<div id="main-brand-content">
+    			<div class="main-brand-content-chart">
+    				<div class="main-brand-content-chart-item-rank"></div>
+    				<div class="main-brnad-content-chart-item-detail">
+    					<div class="main-brnad-content-chart-item-detail-brandname">{{brand_name}}</div>
+    					<div class="main-brnad-content-chart-item-detail-about"> </div>
+					  </div>
+    			</div>    		
+    			<div class="main-brand-content-left">
+    			  <span id="main-brand-content-title">Ranking Info</span>
+            <ul>
+    			    <div id="main-brand-content-ranking-info">
+    					  <div id="main-brand-content-list">This Week's Ranking:
+                  <span class="ranking" id="main-brand-content-list-ranking"></span>
+							    <div id="chart-item-rankchange-icon"></div>
+							    <span class="ranking-change-index">24</span>
+    					  </div>
+    					<div id="main-brand-content-list">Popularity Score: <span class="score" id="main-brand-content-list-score"></span></div>
+    				</ul>
+    			  <span id="main-brand-content-title">Trendy Among</span>
+    			  <div id="main-brand-content">
+    				  <ul>
+    					  <div id="main-brand-content-list">Age <span class="popular-age">25-34</span></div>
+    					  <div id="main-brand-content-list">In <span class="popular-city"></span></div>
+    				  </ul>
+    			  </div>
+            <span id="main-brand-content-title">Brand Info</span>
+    			  <div id="main-brand-content">
+    				  <ul>
+    					  <div id="main-brand-content-list">Since: <span class="found-year"></span></div>
+    					  <div id="main-brand-content-list">Category: <span class="category"></span></div>    			
+    					  <div id="main-brand-content-list">Price: <span class="price">$$$</span></div>
+    				  </ul>
+    			  </div>
+    	    </div>
+    	    <div class="main-brand-content-right">
+    	      <div id="main-brand-content-title-right">Shop This brand at</div>
+    	      <a class="shop-button gilt" id="giltlink" href="#">Gilt</a>
+    	      <a class="shop-button neiman-marcus" id="nmlink" href="#">Neiman Marcus</a>
+    	    	<a class="shop-button net-a-porter" id="naplink" href="#">Net A Porter</a>
+    	    	<a class="shop-button Nordstrom" id="nordstrmlink" href="#">Nordstrom</a>
+    	    </div>
+    			<span id="main-brand-content-title">Photos</span>
+				  <div id="main-brand-content-photos"></div>
+			  </div>
+    	</div>
+    </div>
+	</div>
+
+
+<div id="footer">
+    	<div id="footer-nav">
+    		<div class="footer-nav-col1">
+    			<h2>More Info</h2>
+    			<ul>
+    				<li><a href="/about.html">About Us</a></li>
+    			</ul>
+		    </div>
+		    <div class="footer-nav-col2">
+		    	<h2>2014 Rising Stores</h2>
+		    	<ul>
+		    		<a href="#"><li>Scoop NYC</li></a>
+		    		<a href="#"><li>Revolve Clothing</li></a>
+		    		<a href="#"><li>Topshop</li></a>
+		    		<a href="#"><li>Yoox</li></a>
+		    	</ul>
+		    </div>	
+		    <div class="footer-nav-col3">
+		    	<h2>Popular Stores</h2>
+			    	<ul>
+			    		<a href="#"><li>Gilt</li></a>
+			    		<a href="#"><li>Shopbop</li></a>
+			    		<a href="#"><li>Neiman Marcus</li></a>
+			    		<a href="#"><li>Net-a-Porter</li></a>
+			    	</ul>
+		    </div>	
+		    <div class="footer-nav-col4">
+		    	<h2>Connect with Us</h2>
+		    	<ul>
+		    		<li><a class="footer-facebook" href="www.facebook.com/brandflask"><p>Facebook</p></a></li>
+		    		<li><a class="footer-twitter" href="www.twitter.com/brandflask"><p>Twitter</p></a></li>
+		    		<li><a class="footer-tumblr" href="www.tumblr.com/brandflask"><p>Tumblr</p></a></li>
+		    	</ul>
+		    </div>	
+    	</div>
+</div>
+
+<script type="text/javascript">
+	
+$( document ).ready(function() {
+	
+	$(window).scroll(function() {     
+	    var scroll = $(window).scrollTop();
+	    if (scroll > 0) {
+	        $("header").addClass("active");
+	    }
+	    else {
+	        $("header").removeClass("active");
+	    }
+	});
+	
+  $("#sticker").sticky({topSpacing:70});
+  var obj_array = new Array();
+  {% for obj in srclist %}
+    obj_array.push('{{ obj.objid }}');
+  {% endfor %}
+  update_chart(obj_array, "{{ brand_id }}");
+});
+
+</script>
+
+</body>
+</html>
+

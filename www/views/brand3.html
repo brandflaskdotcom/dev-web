@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Brand Flask</title>
+ <link type="text/css" rel="stylesheet" href="/css/reset.css">
+ <link type="text/css" rel="stylesheet" href="/css/brandflask_2.0.css">
+ <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:100,300,700"> 
+ <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ <script src="/js/jquery.sticky.js"></script>
+ <script src="/js/brand.ready.js"></script> 
+</head>
+
+<body>
+	<header>
+		<div id="header-nav">
+				<nav>
+					<ul>						
+						<li><a href="/"><img id="nav-logo" src="/img/flask.png"></a></li>
+						<li><a href="/top/50">Top50</a></li>
+						<li><a href="/Luxury/50" id="nav_luxury">Luxury</a></li>	
+						<li><a href="/Casual/50" id="nav_casual">Casual</a></li>	
+						<li><a href="/MultiBrandShop/50" id="nav_mbs">Multi Brand Shop</a></li>
+						<li><a href="/Boutique/50" id="nav_boutique">Boutique</a></li>
+					</ul>
+				</nav>
+		</div>
+	</header>
+	
+	<div id="container">
+    <div id="main">
+    	<div id="main-brand">
+    		<div id="main-brand-content">
+    			<div class="main-brand-content-chart">
+    				<div class="main-brand-content-chart-item-rank"></div>
+    				<div class="main-brnad-content-chart-item-detail">
+    					<div class="main-brnad-content-chart-item-detail-brandname">{{brand_name}}</div>
+    					<div class="main-brnad-content-chart-item-detail-about"></div>
+					  </div>
+    			</div>    		
+    			<div class="main-brand-content-left">
+    			  <span id="main-brand-content-title">Ranking Info</span>
+    			  <div id="main-brand-content-ranking-info"><ul></ul></div>
+    			  <span id="main-brand-content-title">Brand Info</span>
+    			  <div id="main-brand-content-brand-info"><ul></ul></div>
+    			</div>
+    	    <div class="main-brand-content-right">
+    	    	<span><a href="#" id="shopboblink">Shopbop</a></span>
+    	    	<span><a href="#" id="giltlink">Gilt</a></span>
+    	    	<span>Neiman Marcus</span>
+    	    </div>
+    			<span id="main-brand-content-title">Photos</span>
+				  <div id="main-brand-content-photos"></div>
+			  </div>
+    	</div>
+    </div>
+	</div>
+<div id="footer">
+    	<div id="footer-nav">
+    		<div class="footer-nav-col1">
+    			<h2>More Info</h2>
+    			<ul>
+    				<li><a href="/about.html">About Us</a></li>
+    			</ul>
+		    </div>
+		    <div class="footer-nav-col2">
+		    	<h2>2014 Rising Stores</h2>
+		    	<ul>
+		    		<a href="#"><li>Scoop NYC</li></a>
+		    		<a href="#"><li>Revolve Clothing</li></a>
+		    		<a href="#"><li>Topshop</li></a>
+		    		<a href="#"><li>Yoox</li></a>
+		    	</ul>
+		    </div>	
+		    <div class="footer-nav-col3">
+		    	<h2>Popular Stores</h2>
+			    	<ul>
+			    		<a href="#"><li>Gilt</li></a>
+			    		<a href="#"><li>Shopbop</li></a>
+			    		<a href="#"><li>Neiman Marcus</li></a>
+			    		<a href="#"><li>Net-a-Porter</li></a>
+			    	</ul>
+		    </div>	
+		    <div class="footer-nav-col4">
+		    	<h2>Connect with Us</h2>
+		    	<ul>
+		    		<li><a class="footer-facebook" href="www.facebook.com/brandflask"><p>Facebook</p></a></li>
+		    		<li><a class="footer-twitter" href="www.twitter.com/brandflask"><p>Twitter</p></a></li>
+		    		<li><a class="footer-tumblr" href="www.tumblr.com/brandflask"><p>Tumblr</p></a></li>
+		    	</ul>
+		    </div>	
+    	</div>
+</div>
+   
+
+<script src="/js/jquery.sticky.js"></script>
+<script type="text/javascript">
+	
+$( document ).ready(function() {
+	var obj_array = new Array();
+  {% for obj in srclist %}
+    obj_array.push('{{ obj.objid }}');
+  {% endfor %}
+
+	$(window).scroll(function() {     
+	    var scroll = $(window).scrollTop();
+	    if (scroll > 0) {
+	        $("header").addClass("active");
+	    }
+	    else {
+	        $("header").removeClass("active");
+	    }
+	});
+	
+  $("#sticker").sticky({topSpacing:70});
+  update_chart(obj_array, "{{ brand_id }}");
+});
+
+</script>
+
+</body>
+</html>
+

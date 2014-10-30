@@ -1,0 +1,85 @@
+function update_chart(apiUrl, tag, flag) {
+  if( flag == 0)  {
+    $('#chart-item-dynamic').empty();
+  }
+  var imgurl = "/img/bn-" + tag + ".png";
+  $( "div.list-title").css({'background-image': 'url(' + imgurl + ')'});
+
+  $.getJSON(apiUrl, function() {
+    console.log ("Done");
+    var stateObj = { state : tag };
+    $(".list-title-name").text(tag + " 50");
+    history.pushState(stateObj, tag, "/"+tag+"/50");
+  }).done(function(data) {
+    $.each( data.Results, function( i, item ) {
+      var tagList = item.TagList;
+      var fmtlist = new String()
+      for (var k in tagList)
+      {
+        if(k != 0) {
+          fmtlist = fmtlist + '<li>' + tagList[k] + '</li>';
+        }
+      }
+      var rd = item.Brand.RankingDelta * -1;
+      var rdicon = new String();
+      if(rd > 0) {
+        rdicon = '<div class="chart-item-rankchange-icon-up icon-position"></div>';
+      } else if(rd < 0) {
+        rdicon = '<div class="chart-item-rankchange-icon-down icon-position"></div>';
+      } else {
+        rdicon = '<div class="chart-item-rankchange-icon-nochange icon-position"></div>';
+      } 
+  
+      var animationInterval = Math.floor(Math.random()*1000);
+      //var hash = $.sha1(item.Brand.DisplayName);
+      var hash = item.Brand.DisplayName.replace(/ /g, '+');
+      if(flag == 0) {
+        $("#chart-item-dynamic").append('<div class="chart-item clearfix" id="ci-' + i + '">' + 
+          '<a href="/detail/' + item.Brand.IdStr + '/' + hash + '"></a>' +
+          '<div class="chart-item-ranking">' +
+          rdicon +
+          '<span class="chart-item-rankchange-index"<p>' + Math.abs(rd) + '</p></span>' +
+          '<div class="chart-item-rank">' + (i+1) + '</div>' +
+          '</div>' +
+          '<div class="chart-item-cover">' +
+          '<img class="triangle" src="/img/triangle.png">' +
+          '<img class="cover-img" src="' + item.Brand.CoverImageUrl +'">' +
+          '</div>' +
+          '<div class="chart-item-detail">' +
+          '<span class="chart-item-detail-category ' + tagList[0].toLowerCase() + '"><p>' + tagList[0] + '</p></span>' +
+          '<span class="chart-item-detail-brandname"><p>' + item.Brand.DisplayName +'</p></span>' +
+          '<ul class="chart-item-detail-producttag">' +
+          fmtlist +
+          '</ul>' +
+          '<span class="chart-item-detail-about"><p>' + item.Brand.About.substring(0, 100) + '</p></span>' +
+          '</div>' +
+          '</div>').children(':last').hide().fadeIn(animationInterval);
+      } else {
+        var cid = '#ci-' + i;
+        $(cid).fadeOut( animationInterval, function() {  $(this).html('<a href="/detail/' + item.Brand.IdStr + '/' + hash + '"></a>' +
+          '<div class="chart-item-ranking">' +
+          rdicon +
+          '<span class="chart-item-rankchange-index"<p>' + Math.abs(rd) + '</p></span>' +
+          '<div class="chart-item-rank">' + (i+1) + '</div>' +
+          '</div>' +
+          '<div class="chart-item-cover">' +
+          '<img class="triangle" src="/img/triangle.png">' +
+          '<img class="cover-img" src="' + item.Brand.CoverImageUrl +'">' +
+          '</div>' +
+          '<div class="chart-item-detail">' +
+          '<span class="chart-item-detail-category ' + tagList[0].toLowerCase() + '"><p>' + tagList[0] + '</p></span>' +
+          '<span class="chart-item-detail-brandname"><p>' + item.Brand.DisplayName +'</p></span>' +
+          '<ul class="chart-item-detail-producttag">' +
+          fmtlist +
+          '</ul>' +
+          '<span class="chart-item-detail-about"><p>' + item.Brand.About.substring(0, 100) + '</p></span>' +
+          '</div>').fadeIn(500); });
+      }
+    });
+  }).fail(function(jqxhr, textStatus, error) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+  }).always(function() {
+    console.log( "complete" );
+  });
+}
