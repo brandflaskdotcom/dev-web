@@ -51,6 +51,12 @@ router.param('bid', function(req,res, next, bid){
   next();
 });
 
+router.param('ecode', function(req,res, next, ecode){
+  req.ecode = ecode;
+  //console.log(bid);
+  next();
+});
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { default_tag: 'top', limit: '50' });
@@ -77,13 +83,19 @@ router.get('/api/v1/get/:tag/:limit', function(req, res) {
     }
     console.log(url);
     request({
-      url: url,
-      json: true
+      uri: url,
+      json: true,
+      timeout: 1000
       }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           //console.log(body) // Print the json response
           console.log("json returned");
           res.json(body);
+        } else {
+          console.error('request failed:',error);
+          var err = new Error('Timed Out');
+          err.status = 503;
+          return next(err);
         }
      })
 });
@@ -93,11 +105,17 @@ router.get('/api/v1/stat/:bid', function(req, res) {
     console.log(url);
     request({
       url: url,
-      json: true
+      json: true,
+      timeout: 1000
       }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
 //          console.log(body) // Print the json response
           res.json(body);
+        } else {
+          console.error('request failed:',error);
+          var err = new Error('Timed Out');
+          err.status = 503;
+          return next(err);
         }
      })
 });
