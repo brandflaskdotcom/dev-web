@@ -94,8 +94,10 @@ header.active {
 }
 
 .main-brand-content-left{
-	width:66%;
-	float:left;
+	width:180px;
+  height:250px;
+  background: #262626;
+  display:inline-block;
 }
 
 .main-brand-content-right{
@@ -140,27 +142,30 @@ header.active {
 
 .main-brnad-content-chart-item-detail-about{
     margin-left:26px;
-	color: #999;
+	  color: #999;
     font-size: 11px;
     line-height: 1.1em;
     padding-top: 5px;
 }
 
 
-#main-brand-content-title{
-	color:#777;
-	display: inline-block;
-    margin: 0 0 14px 30px;
+.main-brand-content-title{
+	  color:#777;
+	  display: inline-block;
+    padding: 1em 0.5em 0.5em 1em;
     width:100%;
     font-size:0.8em;
 }
 
-#main-brand-content-list{
-	display:list-item;
+.main-brand-content-list{
+    color:#fff;
+    padding: 0.5em 0.5em 0.5em 1em;
+    display: inline-block;
+    font-size:0.8em;
 }
 
 .main-brand-content-list-ranking-position{
-	margin-left:10px;
+	padding: 1em 0 0 0;
 	display:inline-block;
 }
 
@@ -172,12 +177,12 @@ header.active {
 
 #main-brand-content-photos {
    line-height: 0;
-   -webkit-column-count: 3;
-   -webkit-column-gap:   0px;
-   -moz-column-count:    3;
-   -moz-column-gap:      0px;
-   column-count:         3;
-   column-gap:           0px;
+   -webkit-column-count: 4;
+   -webkit-column-gap:   1px;
+   -moz-column-count:    4;
+   -moz-column-gap:      1px;
+   column-count:         4;
+   column-gap:           1px;
    margin: 0 auto;
    width: 665px;   
 }
@@ -1540,3 +1545,7 @@ figure.show{
 	background-position:-250px -50px;
 }
 
+span.main-brand-span{
+  padding:0.5em 0 0.5em 0;
+  display:inline-block;
+}
