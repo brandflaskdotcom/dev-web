@@ -152,7 +152,7 @@ header.active {
 .main-brand-content-title{
 	  color:#777;
 	  display: inline-block;
-    padding: 1em 0.5em 0.5em 1em;
+    padding: 1em 0.5em 1em 1em;
     width:100%;
     font-size:0.8em;
 }
@@ -165,7 +165,7 @@ header.active {
 }
 
 .main-brand-content-list-ranking-position{
-	padding: 1em 0 0 0;
+	padding: 0 0 0 0;
 	display:inline-block;
 }
 
@@ -327,7 +327,7 @@ header.active {
 .similar-brand-rankchange-icon-up {
 	left: 95px;
 	position: absolute;
-	top: 12px;
+	/*top: 12px;*/
 }
 
 .similar-brand-rankchange-index {
