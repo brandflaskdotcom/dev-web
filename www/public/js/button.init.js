@@ -76,7 +76,7 @@ function init_buttons(category)
     var thistext = $(this).text();
     var tag;
     if(thistext == "Active") {
-      thistext+= "andOutdoor";
+      thistext+= "AndOutdoor";
     }
     if(splitarray[0] != "Top") { 
       tag = splitarray[0] + "%2C" + thistext;
