@@ -1,25 +1,12 @@
 function update_chart(apiUrl, tag, flag) {
 
   var category = [ "Boutique", "Casual", "Luxury" , "MultiBrandShop", "top" ];
-  var imgurl = "/img/bn-";
 
   $.getJSON(apiUrl, function() {
     console.log ("Done");
-    var stateObj = { state : tag };
-    $(".list-title-name").text(tag + " 50");
-    history.pushState(stateObj, tag, "/"+tag+"/50");
-
     if( flag == 0)  {
       $('#chart-item-dynamic').empty();
     }
-
-  if ( $.inArray( tag, category ) > -1 ) {
-    imgurl += tag + ".png";
-  } else {
-    imgurl += "top.png";
-  }
-
-    $( "div.list-title").css({'background-image': 'url(' + imgurl + ')'});
   }).done(function(data) {
     $.each( data.Results, function( i, item ) {
       var tagList = item.TagList;

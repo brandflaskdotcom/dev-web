@@ -55,16 +55,15 @@
 				<div class="side-nav-tag">
 					<ul class="tags">
 						<li><a class="active-tag" href="#">Top 50 All</a></li>
-						<li><a href="#" id="nav_clothing">Clothing</a></li>
-						<li><a href="#" id="nav_denim">Denim</a></li>
-						<li><a href="#" id="nav_bags">Bags</a></li>
-						<li><a href="#" id="nav_shoes">Shoes</a></li>
-						<li><a href="#" id="nav_active">Active</a></li>
-						<li><a href="#" id="nav_bridal">Bridal</a></li>
-						<li><a href="#" id="nav_underwear">Underwear</a></li>
-						<li><a href="#" id="nav_swim">Swim</a></li>
-						<li><a href="#" id="nav_maternity">Maternity</a>
-						</li>
+						<li><a href="#" class="nav_bytag">Clothing</a></li>
+						<li><a href="#" class="nav_bytag">Denim</a></li>
+						<li><a href="#" class="nav_bytag">Bags</a></li>
+						<li><a href="#" class="nav_bytag">Shoes</a></li>
+						<li><a href="#" class="nav_bytag">Active</a></li>
+						<li><a href="#" class="nav_bytag">Bridal</a></li>
+						<li><a href="#" class="nav_bytag">Underwear</a></li>
+						<li><a href="#" class="nav_bytag">Swim</a></li>
+						<li><a href="#" class="nav_bytag">Maternity</a></li>
 					</ul>
 				</div>
     		</div>
@@ -99,10 +98,10 @@
 			<div class="footer-nav-col3">
 				<h2>Popular Stores</h2>
 				<ul>
-					<li><a href="#" id="nav_gilt">Gilt</a></li>
-					<li><a href="#" id="nav_shopbop">Shopbop</a></li>
-					<li><a href="#" id="nav_nm">Neiman Marcus</a></li>
-					<li><a href="#" id="nav_nap">Net-a-Porter</a></li>
+					<li><a href="#" class="nav_bytag">Gilt</a></li>
+					<li><a href="#" class="nav_bytag">Shopbop</a></li>
+					<li><a href="#" class="nav_bytag">Neiman Marcus</a></li>
+					<li><a href="#" class="nav_bytag">Net-a-Porter</a></li>
 				</ul>
 			</div>	
 			<div class="footer-nav-col4">
@@ -186,7 +185,8 @@ $( document ).ready(function() {
 			return false;
 		});
 	});
-
+  init_buttons(category);
+  update_global_state('{{default_tag}}');
   var apiUrl = '/api/v1/get/{{default_tag}}/{{limit}}';
   update_chart(apiUrl, '{{default_tag}}' ,0);
   init_buttons(category);
