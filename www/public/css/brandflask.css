@@ -523,7 +523,8 @@ header.active {
 .tags li:first-child{
 	margin-left:15px;
 }
-.active-tag{
+
+#active-tag{
 	color:#853069
 }
 

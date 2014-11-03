@@ -9,7 +9,12 @@ function update_global_state(category)
     imgurl += "top.png";
   } else {
     imgurl += category + ".png";
-  } 
+  }
+
+  if( category == "" || category == "top") {
+    category = "Top";
+  }
+  $( "#active-tag").text(category + " 50 all");
   $( "div.list-title").css({'background-image': 'url(' + imgurl + ')'});
 }
 
@@ -66,12 +71,20 @@ function init_buttons(category)
   });
 
   $( "a.nav_bytag" ).click(function() {
-    console.log(tag);
-    var tag = $(this).text();
-    if(tag == "Active") {
-      tag+= "andOutdoor";
+    var category = $( "#active-tag").text();
+    var splitarray = category.split(" ");
+    var thistext = $(this).text();
+    var tag;
+    if(thistext == "Active") {
+      thistext+= "andOutdoor";
+    }
+    if(splitarray[0] != "Top") { 
+      tag = splitarray[0] + "%2C" + thistext;
+    } else {
+      tag = thistext;
     }
     var apiUrl = '/api/v1/get/' + tag + '/50';
+    console.log(tag);
     update_chart(apiUrl, tag, 1);
   });
 }
