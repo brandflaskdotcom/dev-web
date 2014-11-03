@@ -75,7 +75,7 @@ router.get('/api/v1/get/:hash', function(req, res) {
     res.json({ data: req.imglist });
 });
 
-router.get('/api/v1/get/:tag/:limit', function(req, res) {
+router.get('/api/v1/get/:tag/:limit', function(req, res, next) {
     var url = "http://localhost:8080/?format=json&num=" + req.limit;
 //    console.log(req.tag);
     if(req.tag != "top") {
@@ -85,7 +85,7 @@ router.get('/api/v1/get/:tag/:limit', function(req, res) {
     request({
       uri: url,
       json: true,
-      timeout: 1000
+      timeout: 2000
       }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           //console.log(body) // Print the json response
@@ -93,29 +93,23 @@ router.get('/api/v1/get/:tag/:limit', function(req, res) {
           res.json(body);
         } else {
           console.error('request failed:',error);
-          var err = new Error('Timed Out');
-          err.status = 503;
-          return next(err);
         }
      })
 });
 
-router.get('/api/v1/stat/:bid', function(req, res) {
+router.get('/api/v1/stat/:bid', function(req, res, next) {
     var url = "http://localhost:8080/view/"+ req.bid + "?format=json";
     console.log(url);
     request({
       url: url,
       json: true,
-      timeout: 1000
+      timeout: 2000
       }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
 //          console.log(body) // Print the json response
           res.json(body);
         } else {
           console.error('request failed:',error);
-          var err = new Error('Timed Out');
-          err.status = 503;
-          return next(err);
         }
      })
 });

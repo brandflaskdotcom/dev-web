@@ -79,8 +79,7 @@ header.active {
 #main-brand-content ul{
 	list-style-type: initial;
 	color:#777;    
-	margin:0 0 45px 55px;
-	line-height:1.5em;
+	line-height:0.1em;
 }
 
 .main-brand-content-chart{
@@ -94,7 +93,7 @@ header.active {
 }
 
 .main-brand-content-left{
-	width:180px;
+	width:165px;
   height:250px;
   background: #262626;
   display:inline-block;
@@ -159,8 +158,7 @@ header.active {
 
 .main-brand-content-list{
     color:#fff;
-    padding: 0.5em 0.5em 0.5em 1em;
-    display: inline-block;
+    padding: 0 0.5em 0.5em 1em;
     font-size:0.8em;
 }
 
